@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.siscofran.testcermati.R
+import com.siscofran.testcermati.ViewModelProviderFactory
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
@@ -20,14 +21,14 @@ import javax.inject.Inject
 class MainActivity : DaggerAppCompatActivity() {
 
     @Inject
-    lateinit var viewModelProviderFactory: ViewModelProvider.Factory
+    lateinit var viewModelProviderFactory: ViewModelProviderFactory
     lateinit var viewModel: MainViewModel
     var mainAdapter: MainAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this, viewModelProviderFactory).get(MainViewModel::class.java)
         setContentView(R.layout.activity_main)
+        viewModel = ViewModelProviders.of(this, viewModelProviderFactory).get(MainViewModel::class.java)
 
         setSupportActionBar(toolbar)
 
